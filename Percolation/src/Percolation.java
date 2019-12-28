@@ -1,6 +1,6 @@
 import edu.princeton.cs.algs4.WeightedQuickUnionUF;
 
-public class Percolation {
+public final class Percolation {
     private boolean[] flag; // whether sit is open, 1 open, 0 block.
     private int N, numberOfOpenSites = 0;
     private WeightedQuickUnionUF uf;
@@ -34,8 +34,10 @@ public class Percolation {
     public void open(int row, int col) {
         validateIndex(row, col);
         int index = xyTo1D(row, col);
-        flag[index] = true;
-        numberOfOpenSites++;
+        if (!flag[index]) {
+            flag[index] = true;
+            numberOfOpenSites++;
+        }
         if (!isLeftEdge(row, col)) {
             if (isOpen(row, col-1)) uf.union(index, xyTo1D(row, col-1));
         }
@@ -77,5 +79,28 @@ public class Percolation {
     private boolean isRightEdge(int row, int col) { return col == N; }
     private boolean isTopEdge(int row, int col) { return row == 1; }
     private boolean isBottomEdge(int row, int col) { return row == N; }
+
+    public static void main(String[] args) {
+            Percolation p = new Percolation(3);
+            System.out.println("p.isOpen(1, 2) = " + p.isOpen(1, 2));
+            p.open(1, 2);
+            System.out.println("p.isOpen(1, 2) = " + p.isOpen(1, 2));
+
+
+            System.out.println("p.isOpen(2,2) = " + p.isOpen(2, 2));
+            p.open(2, 2);
+            System.out.println("p.isOpen(2,2) = " + p.isOpen(2, 2));
+            System.out.println("p.isFull(2, 2) = " + p.isFull(2, 2));
+
+
+            System.out.println("p.isOpen(3, 1) = " + p.isOpen(3, 1));
+            p.open(3, 1);
+            System.out.println("p.isOpen(3, 1) = " + p.isOpen(3, 1));
+            System.out.println("p.isFull(3,1) = " + p.isFull(3, 1));
+
+
+            System.out.println("p.percolates() = " + p.percolates());
+        }
+
 
 }
