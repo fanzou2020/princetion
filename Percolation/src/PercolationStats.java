@@ -1,7 +1,6 @@
 import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.StdRandom;
 import edu.princeton.cs.algs4.StdStats;
-import org.jetbrains.annotations.NotNull;
 
 public class PercolationStats {
     private double[] threshold;
@@ -34,7 +33,7 @@ public class PercolationStats {
         return mean() + stddev() * 1.96 / Math.sqrt(threshold.length);
     }
 
-    public static void main(@NotNull String[] args) {
+    public static void main(String[] args) {
 
         int n = Integer.parseInt(args[0]);
         int trials = Integer.parseInt(args[1]);
