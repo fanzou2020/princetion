@@ -1,16 +1,18 @@
 import edu.princeton.cs.algs4.WeightedQuickUnionUF;
 
-public final class Percolation {
+public class Percolation {
     private boolean[] flag; // whether sit is open, 1 open, 0 block.
-    private int N, numberOfOpenSites = 0;
-    private WeightedQuickUnionUF uf;
+    private final int n;
+    private int numberOfOpenSites = 0;
+    private final WeightedQuickUnionUF uf, uf2;
     private final int virtualTopSite, virtualBottomSite;
 
     public Percolation(int N) {
         if (N <= 0) throw new IllegalArgumentException("Constructor N < 0");
-        this.N = N;
+        this.n = N;
         flag = new boolean[N * N + 2]; // initialize flag to 0; introduce the virtual top site
-        this.uf = new WeightedQuickUnionUF(N * N + 2);
+        uf = new WeightedQuickUnionUF(N * N + 2);
+        uf2 = new WeightedQuickUnionUF(N * N + 1);
         virtualTopSite = N * N;
         virtualBottomSite = N * N + 1;
     }
@@ -23,7 +25,7 @@ public final class Percolation {
 
     public boolean isFull(int row, int col) {
         validateIndex(row, col);
-        return uf.connected(xyTo1D(row, col), virtualTopSite);
+        return isOpen(row, col) && uf2.connected(xyTo1D(row, col), virtualTopSite);
     }
 
     public boolean percolates() { return uf.connected(virtualTopSite, virtualBottomSite); }
@@ -39,23 +41,23 @@ public final class Percolation {
             numberOfOpenSites++;
         }
         if (!isLeftEdge(row, col)) {
-            if (isOpen(row, col-1)) uf.union(index, xyTo1D(row, col-1));
+            if (isOpen(row, col-1)) union(index, xyTo1D(row, col-1));
         }
 
         if (!isRightEdge(row, col)) {
-            if (isOpen(row, col+1)) uf.union(index, xyTo1D(row, col+1));
+            if (isOpen(row, col+1)) union(index, xyTo1D(row, col+1));
         }
 
         if (!isTopEdge(row, col)) {
-            if (isOpen(row-1, col)) uf.union(index, xyTo1D(row-1, col));
+            if (isOpen(row-1, col)) union(index, xyTo1D(row-1, col));
         }
         else { // isTopEdge, connect to virtual top site.
-            uf.union(index, virtualTopSite);
+            union(index, virtualTopSite);
             flag[virtualTopSite] = true;
         }
 
         if (!isBottomEdge(row, col)) {
-            if (isOpen(row+1, col)) uf.union(index, xyTo1D(row+1, col));
+            if (isOpen(row+1, col)) union(index, xyTo1D(row+1, col));
         }
         else { // is BottomEdge, union to bottom virtual site
             uf.union(index, virtualBottomSite);
@@ -63,22 +65,27 @@ public final class Percolation {
         }
     }
 
+    private void union(int p, int q) {
+        uf.union(p, q);
+        uf2.union(p, q);
+    }
+
     // convert the row # and col # to array index
     private int xyTo1D(int row, int col) {
-        return (row-1) * N + (col-1);
+        return (row-1) * n + (col-1);
     }
 
     private boolean isValid(int x, int y) {
-        return x >= 1 && x <= N && y >= 1 && y <= N;
+        return x >= 1 && x <= n && y >= 1 && y <= n;
     }
     private void validateIndex(int x, int y) {
-        if (!isValid(x, y)) throw new IndexOutOfBoundsException(String.format("N:%d, x:%d, y:%d", N, x, y));
+        if (!isValid(x, y)) throw new IllegalArgumentException(String.format("N:%d, x:%d, y:%d", n, x, y));
     }
 
     private boolean isLeftEdge(int row, int col) { return col == 1; }
-    private boolean isRightEdge(int row, int col) { return col == N; }
+    private boolean isRightEdge(int row, int col) { return col == n; }
     private boolean isTopEdge(int row, int col) { return row == 1; }
-    private boolean isBottomEdge(int row, int col) { return row == N; }
+    private boolean isBottomEdge(int row, int col) { return row == n; }
 
     public static void main(String[] args) {
             Percolation p = new Percolation(3);
