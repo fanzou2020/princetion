@@ -1,8 +1,6 @@
 import edu.princeton.cs.algs4.StdOut;
 
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
 
 public class SparseVector {
     private HashMap<Integer, Double> v;  // Use Hash Symbol Tables (HashST), because order not important
