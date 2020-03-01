@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/8-puzzle/8-puzzle.iml" filepath="$PROJECT_DIR$/8-puzzle/8-puzzle.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CollinearPoints/CollinearPoints.iml" filepath="$PROJECT_DIR$/CollinearPoints/CollinearPoints.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Kd-Trees/Kd-Trees.iml" filepath="$PROJECT_DIR$/Kd-Trees/Kd-Trees.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Percolation/Percolation.iml" filepath="$PROJECT_DIR$/Percolation/Percolation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Queues/Queues.iml" filepath="$PROJECT_DIR$/Queues/Queues.iml" />
+      <module fileurl="file://$PROJECT_DIR$/STApplication/STApplication.iml" filepath="$PROJECT_DIR$/STApplication/STApplication.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Test/Test.iml" filepath="$PROJECT_DIR$/Test/Test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WordNet/WordNet.iml" filepath="$PROJECT_DIR$/WordNet/WordNet.iml" />
+      <module fileurl="file://$PROJECT_DIR$/princetion.iml" filepath="$PROJECT_DIR$/princetion.iml" />
+    </modules>
+  </component>
+</project>
