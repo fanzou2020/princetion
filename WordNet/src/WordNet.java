@@ -1,13 +1,14 @@
-import edu.princeton.cs.algs4.*;
+
+import edu.princeton.cs.algs4.Digraph;
+import edu.princeton.cs.algs4.In;
+import edu.princeton.cs.algs4.RedBlackBST;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 
 public final class WordNet {
     private HashMap<Integer, String> map = new HashMap<>();   // HashMap between index and synsets
     private RedBlackBST<String, ArrayList<Integer>> nounsTree = new RedBlackBST<>(); // Key=noun, value = indices.
-    private Digraph G;
     private SAP sap;
 
     // constructor takes the name of the two input files
@@ -41,7 +42,7 @@ public final class WordNet {
         }
 
         // Construct Digraph G
-        G = new Digraph(numOfVertices);
+        Digraph G = new Digraph(numOfVertices);
         In inHypernyms = new In(hypernyms);
         while (!inHypernyms.isEmpty()) {
             String[] stringsFields = inHypernyms.readLine().split(",");
@@ -57,6 +58,10 @@ public final class WordNet {
         }
 
         // Construct SAP sap.
+        /*
+        !!! throw an Illegal Argument Exception when G is not a rooted DAG
+
+         */
         sap = new SAP(G);
     }
 
@@ -85,10 +90,6 @@ public final class WordNet {
         if (!isNoun(nounA) || !isNoun(nounB)) throw new IllegalArgumentException("nounA or nounB is not a WordNet noun");
         int ancestor = sap.ancestor(nounsTree.get(nounA), nounsTree.get(nounB));
         return map.get(ancestor);
-    }
-
-    public static void main(String[] args) {
-        WordNet wordNet = new WordNet(args[0], args[1]);
     }
 }
 
