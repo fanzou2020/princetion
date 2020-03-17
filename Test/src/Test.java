@@ -25,5 +25,12 @@ public class Test {
 
         byte b1 = 1;
         StdOut.println(b1);
+
+        StdOut.println(a.charAt(1)+1);
+
+        int i = 1 << 8;
+        StdOut.println(i);
+
+
     }
 }
