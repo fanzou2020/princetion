@@ -5,6 +5,9 @@ import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdOut;
 import java.util.ArrayList;
 
+/*
+按照要求建立好flow network, 运行Fordfolkson算法即可，注意点在于game vertice 和 tema vertices 对应的整数序号 v.
+ */
 public class BaseballElimination {
     private final int n;
     private final String[] teams;
