@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/8-puzzle/8-puzzle.iml" filepath="$PROJECT_DIR$/8-puzzle/8-puzzle.iml" />
       <module fileurl="file://$PROJECT_DIR$/BaseballElimination/BaseballElimination.iml" filepath="$PROJECT_DIR$/BaseballElimination/BaseballElimination.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Boggle/Boggle.iml" filepath="$PROJECT_DIR$/Boggle/Boggle.iml" />
       <module fileurl="file://$PROJECT_DIR$/CollinearPoints/CollinearPoints.iml" filepath="$PROJECT_DIR$/CollinearPoints/CollinearPoints.iml" />
       <module fileurl="file://$PROJECT_DIR$/Kd-Trees/Kd-Trees.iml" filepath="$PROJECT_DIR$/Kd-Trees/Kd-Trees.iml" />
       <module fileurl="file://$PROJECT_DIR$/MaxFlow/MaxFlow.iml" filepath="$PROJECT_DIR$/MaxFlow/MaxFlow.iml" />
