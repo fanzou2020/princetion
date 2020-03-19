@@ -1,3 +1,4 @@
+import edu.princeton.cs.algs4.Queue;
 import edu.princeton.cs.algs4.StdOut;
 public class Test {
 
@@ -30,6 +31,9 @@ public class Test {
 
         int i = 1 << 8;
         StdOut.println(i);
+
+        Queue<String> q = new Queue<>();
+        StdOut.println(q == null);
 
 
     }
