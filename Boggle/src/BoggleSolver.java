@@ -1,10 +1,9 @@
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.SET;
 import edu.princeton.cs.algs4.StdOut;
-import edu.princeton.cs.algs4.TrieSET;
 
 public class BoggleSolver {
-    private TrieSET trie;
+    private DicTries trie;
 
     /**
      * Initializes the data structure using the given array of strings as the dictionary.
@@ -12,9 +11,10 @@ public class BoggleSolver {
      * @param dictionary string array of dictionary
      */
     public BoggleSolver(String[] dictionary) {
-        trie = new TrieSET();
+        trie = new DicTries();
         for (String s : dictionary)
             trie.add(s);
+//        StdOut.println(trie.size());
     }
 
     /**
@@ -48,19 +48,15 @@ public class BoggleSolver {
         } else {
             s.append(letter);
         }
-        String str = s.toString();
 
-        Iterable<String> q = trie.keysWithPrefix(str);
-        int size = 0;
-        for (String item : q) size++;
-        if (size == 0) {
+        if (!trie.keysWithPrefix(s)) {
             if (letter == 'Q') s.deleteCharAt(s.length()-1);
             s.deleteCharAt(s.length()-1);
             onStack[i][j] = false;
             return;
         }
 
-        if (trie.contains(str) && str.length() >= 3) allValidWords.add(str);
+        if (trie.contains(s) && s.length() >= 3) allValidWords.add(s.toString());
 
         // all adjacent cubes
         int[][] adj = {
@@ -92,6 +88,11 @@ public class BoggleSolver {
      */
     public int scoreOf(String word) {
         int len = word.length();
+        if (len < 3) return 0;
+
+        StringBuilder s = new StringBuilder(word);
+        if (!trie.contains(s)) return 0;
+
         if (len <= 4) return 1;
         else if (len == 5) return 2;
         else if (len == 6) return 3;
