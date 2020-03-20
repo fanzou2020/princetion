@@ -10,6 +10,7 @@
       <module fileurl="file://$PROJECT_DIR$/MaxFlow/MaxFlow.iml" filepath="$PROJECT_DIR$/MaxFlow/MaxFlow.iml" />
       <module fileurl="file://$PROJECT_DIR$/Percolation/Percolation.iml" filepath="$PROJECT_DIR$/Percolation/Percolation.iml" />
       <module fileurl="file://$PROJECT_DIR$/Queues/Queues.iml" filepath="$PROJECT_DIR$/Queues/Queues.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Regexp/Regexp.iml" filepath="$PROJECT_DIR$/Regexp/Regexp.iml" />
       <module fileurl="file://$PROJECT_DIR$/STApplication/STApplication.iml" filepath="$PROJECT_DIR$/STApplication/STApplication.iml" />
       <module fileurl="file://$PROJECT_DIR$/SeamCarving/SeamCarving.iml" filepath="$PROJECT_DIR$/SeamCarving/SeamCarving.iml" />
       <module fileurl="file://$PROJECT_DIR$/String/String.iml" filepath="$PROJECT_DIR$/String/String.iml" />
