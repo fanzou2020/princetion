@@ -61,9 +61,31 @@ public class LZW {
         for (i = 0; i < R; i++) {                   // Initialize table for single chars.
             st[i] = "" + (char) i;
         }
-        st[i++] = " ";      // (unused) lookahead for EOF.
+        st[i++] = " ";                              // (unused) lookahead for EOF.
 
         int codeword = BinaryStdIn.readInt(W);
+        if (codeword == R) return;                  // expanded message is empty string
         String val = st[codeword];
+
+        while (true) {
+            BinaryStdOut.write(val);                // write current substring
+            codeword = BinaryStdIn.readInt(W);      // read next codeword
+            if (codeword == R) break;               // R is EOF
+            String s = st[codeword];                // next string
+            if (i == codeword)                      // If lookahead is invalid, special case
+                s = val + val.charAt(0);            //     make codeword from last one.
+            if (i < L)
+                st[i++] = val + s.charAt(0);        // Add new entry to code table,
+                                                    // that is the previous string appending
+                                                    // the first char in string s.
+            val = s;
+        }
+        BinaryStdOut.close();
+    }
+
+    public static void main(String[] args) {
+        if      (args[0].equals("-")) compress();
+        else if (args[0].equals("+")) expand();
+        else throw new IllegalArgumentException("Illegal command line argument");
     }
 }
