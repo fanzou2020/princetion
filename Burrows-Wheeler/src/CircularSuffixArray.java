@@ -7,7 +7,7 @@ import edu.princeton.cs.algs4.Merge;
  */
 public class CircularSuffixArray {
     private String s;
-    int[] index;
+    private int[] index;
 
     // circular suffix array of s
     public CircularSuffixArray(String s) {
