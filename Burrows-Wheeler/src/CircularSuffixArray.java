@@ -52,7 +52,10 @@ public class CircularSuffixArray {
     public int length() { return s.length(); }
 
     // returns index of ith sorted suffix
-    public int index(int i) { return index[i]; }
+    public int index(int i) {
+        if (i >= index.length || i < 0) throw new IllegalArgumentException("index out of bound");
+        return index[i];
+    }
 
     // unit testing
     public static void main(String[] args) {
