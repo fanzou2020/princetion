@@ -1,6 +1,8 @@
 import edu.princeton.cs.algs4.BinaryStdIn;
 import edu.princeton.cs.algs4.BinaryStdOut;
 
+// This is tricky, in transform(), use index merge sort, write the last index character.
+// In inverseTransform(), use key-index counting algorithm to construct next[] array, about 10 lines of code!!
 public class BurrowsWheeler {
     private static final int R = 256;
 

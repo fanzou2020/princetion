@@ -10,6 +10,7 @@ public class CircularSuffixArray {
     private int[] index;
 
     // circular suffix array of s
+    // use merge index-sort to solve this problem, very concise!!
     public CircularSuffixArray(String s) {
         if (s == null) throw new IllegalArgumentException("argument of CircularSuffixArray constructor is null");
         this.s = s;
